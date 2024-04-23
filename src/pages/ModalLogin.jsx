@@ -25,7 +25,7 @@ const ModalLogin = ({onClose}) =>{
           </div>
 
           <div className="flex items-center justify-center">
-            <button type="button" onClick={onClose}
+            <button type="submit" onClick={onClose}
             className="bg-slate-500 text-white py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-400"
             >Login</button>
             <label className="text-sm text-slate-500 ml-1 underline hover:text-red-500 ">
