@@ -5,7 +5,7 @@ import Header from "./Header";
 const Layouts = () =>{
   return(
     <div>
-      <div>
+      <div> 
         <Header/>
       </div>
       <div className="mt-20 flex h-[100vh] overscroll-auto bg">
