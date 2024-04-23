@@ -13,7 +13,7 @@ const Header = () => {
           LoGo
         </Logo>
         <Icon>
-          <a href="#" onClick={()=>setshowModal(true)}><VscAccount/></a>
+          <a href="#" onClick={()=>setshowModal(true)}> <VscAccount/> </a>
         </Icon>
       </div>
       {showModal && <ModalLogin onClose={()=>setshowModal(false)}/>}
