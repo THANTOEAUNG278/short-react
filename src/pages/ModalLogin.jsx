@@ -1,42 +1,44 @@
-import { useState } from "react";
+import { useCallback } from "react";
+import {useForm} from "react-hook-form"
 
-const ModalLogin = ({onClose}) =>{
-  const {username,setUserName} = useState('');
-  const {password, setPassword} = useState('');
-  return (
-    <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
+
+const ModalLogin = ({onClose}) => {
+  const {register,handleSubmit,formState:{errors}} = useForm();
+  const onSubmit = useCallback(data =>console.log("data",data),[])
+  return(
+    <div className="fixed flex inset-0 justify-center items-center bg-black bg-opacity-50">
       <div className="bg-white rounded-lg p-8 w-80">
-        
-        <form className="space-y-4">
-        <span onClick={onClose} className="text-red-600 absolute top-[28%] right-[39%] hover:scale-[0.9] cursor-pointer text-xl">&times;</span> 
+        <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+        <span onClick={onClose} className="absolute top-[28%] right-[39%] font-bold cursor-pointer text-red-500 text-2xl hover:scale-[.9]">&times;</span>
           <div>
-            <label htmlFor="username" className="block text-slate-500">Email</label>
-            <input type="email" id="username" name="username" placeholder="Email Adress"
-            className="w-full px-3 py-2 border text-slate-600 border-gray-300 rounded focus:ring focus:ring-blue-600"
-            value={username} onChange={e => setUserName(e.target.value)} required 
-            />
+            <label htmlFor="username" className="block text-black">Useremail</label>
+          <input
+          className="w-full px-3 py-2 text-black border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-400"
+          type="email" defaultValue="" {...register("username",{required: "! Input Username",pattern: {value:/A-z$/,message:"! Invalud" } })} placeholder="Enter Useremail" />
+          <p className="text-red-500">{errors?.username?.message}</p>
           </div>
 
-          <div>
-            <label htmlFor="password" className="block text-slate-500">Password</label>
-            <input type="text" id="password" name="password" placeholder="Enter Password" 
-            className="w-full px-3 py-2 border text-slate-600 border-gray-300 rounded focus:ring focus:ring-blue-600"
-            value={password} onChange={e =>setPassword(e.target.value)} required
-            />
+          <div> 
+            <label htmlFor="password" className="block text-black ">Password</label>
+            <input
+            className="w-full px-3 py-2 border text-black border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-400"
+            type="password" defaultValue="" {...register("password")} placeholder="Enter Password" />
           </div>
-
+          
           <div className="flex items-center justify-between">
-            <button type="submit"
-            className="bg-slate-500 text-white py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-400"
-            >Login</button>
-            <label className="text-sm text-slate-500 ml-1 underline flex items-center justify-center hover:text-red-500 ">
-              <input type="checkbox" name="remember" className="" />
-              Remember me</label>
+            <button className="bg-blue-500 text-white py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-400">
+              Login</button>
+            <label className="text-blue-400">
+              <input className="mr-1" type="checkbox" name="remerber"
+              />
+              Remerber Me
+            </label>
           </div>
 
-          <div>
-            <span className="ml-2 text-sm text-gray-500 hover:text-white flex items-center justify-center">
-              <a href="#" className="text-slate-500 hover:underline hover:text-red-400">Forgot password?</a>
+          <div className="text-right">
+            <button className="text-red-600 hover:text-red-500 mr-2 hover:underline" onClick={onClose}>Cancle</button>
+            <span>
+              <a className="text-blue-500 hover:underline">Forgot Password?</a>
             </span>
           </div>
         </form>
