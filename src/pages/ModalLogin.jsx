@@ -12,8 +12,8 @@ const ModalLogin = ({onClose}) => {
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
 
           <div>
-            <label htmlFor="username" className="block text-black">Useremail</label>
-          <input
+            <label htmlFor="useremail" className="block text-black">Useremail</label>
+          <input id="useremail"
           className="w-full px-3 py-2 text-black border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-400"
           type="email" defaultValue="" {...register("username",{required: "! Input Username",pattern: {value:/A-z$/,message:"! Invalud" } })} placeholder="Enter Useremail" />
           <p className="text-red-500">{errors?.username?.message}</p>
@@ -21,7 +21,7 @@ const ModalLogin = ({onClose}) => {
 
           <div> 
             <label htmlFor="password" className="block text-black ">Password</label>
-            <input
+            <input id="password"
             className="w-full px-3 py-2 border text-black border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-400"
             type="password" defaultValue="" {...register("password")} placeholder="Enter Password" />
           </div>
