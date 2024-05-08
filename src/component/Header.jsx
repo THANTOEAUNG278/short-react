@@ -3,9 +3,9 @@ import { VscAccount } from "react-icons/vsc";
 import Logo from "./base/Logo";
 import { useState } from "react";
 import ModalLogin from "../pages/ModalLogin";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
-  const [showModal,setshowModal] = useState(false);
   return (
     <div className="fixed top-0 left-0 right-0 bg-slate-600 w-full z-10 text-white font-bold ">
       <div className="flex justify-between items-center h-20 mx-20">
@@ -13,10 +13,9 @@ const Header = () => {
           LoGo
         </Logo>
         <Icon>
-          <a href="#" onClick={()=>setshowModal(true)}> <VscAccount/> </a>
+          <NavLink to={"login"}> <VscAccount/> </NavLink>
         </Icon>
       </div>
-      {showModal && <ModalLogin onClose={()=>setshowModal(false)}/>}
     </div>
   )
 }

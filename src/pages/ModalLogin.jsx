@@ -6,10 +6,11 @@ const ModalLogin = ({onClose}) => {
   const {register,handleSubmit,formState:{errors}} = useForm();
   const onSubmit = useCallback(data =>console.log("data",data),[])
   return(
-    <div className="fixed flex inset-0 justify-center items-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg p-8 w-80">
+    <div className="py-24 flex items-center justify-center">
+      <div className="bg-slate-300 rounded-lg p-8 w-80">
+      <h2 className="text-2xl mb-4 text-center font-bold">Login</h2>
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
-        <span onClick={onClose} className="absolute top-[28%] right-[39%] font-bold cursor-pointer text-red-500 text-2xl hover:scale-[.9]">&times;</span>
+
           <div>
             <label htmlFor="username" className="block text-black">Useremail</label>
           <input
