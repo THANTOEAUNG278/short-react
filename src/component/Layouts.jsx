@@ -14,6 +14,7 @@ const Layouts = () =>{
         </div>
         <div className="flex-auto px-5"> 
           <Outlet/>
+          
         </div>
       </div>
     </div>
